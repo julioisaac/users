@@ -45,6 +45,9 @@ Project to handle with Users CSV file upload, Users API and integrations stuff
 
 ## Architecture
 
+
+### Ingestion sequence flow
+
 ```mermaid
 sequenceDiagram
   Worker->>+Broker: Ingest users csv file
@@ -56,6 +59,8 @@ sequenceDiagram
     Consumer->>+Cache: Save in cache
   end
 ```
+
+### Client request sequence flow
 
 ```mermaid
 sequenceDiagram
