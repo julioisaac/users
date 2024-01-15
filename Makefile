@@ -49,3 +49,14 @@ build: lint ## Build apps
 lint:  ## Run lint tools
 	@$(GOLANGCILINT) run
 
+db/create-migration: ## Create a migration file (need to pass MIGRATION_NAME param)
+	$(_goose_) create $(MIGRATION_NAME) sql
+
+db/migrate-up: ## Apply migrations in db
+	$(_goose_) up
+
+db/migrate-down: ## Apply migrations rollback in db
+	$(_goose_) down
+
+db/migration-status: ## Check migrations status in db
+	$(_goose_) status
