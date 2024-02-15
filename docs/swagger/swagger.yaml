@@ -1,0 +1,103 @@
+definitions:
+  common.ApiError:
+    description: default error API format
+    properties:
+      code:
+        description: Code of the error
+        type: string
+      detail:
+        additionalProperties: {}
+        description: Detail of the error
+        type: object
+      message:
+        description: Message of the error
+        type: string
+    type: object
+  usersAPI.userResponse:
+    description: holds the recovered user
+    properties:
+      email_address:
+        type: string
+      first_name:
+        type: string
+      last_name:
+        type: string
+      parent_user_id:
+        type: integer
+      users_id:
+        type: integer
+    type: object
+info:
+  contact: {}
+paths:
+  /api/health:
+    get:
+      description: Health check
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      tags:
+      - health
+  /api/v1/users:
+    get:
+      consumes:
+      - application/json
+      description: Get users in cache or db
+      parameters:
+      - description: users_id
+        in: query
+        name: users_id
+        type: string
+      - description: first_name
+        in: query
+        name: first_name
+        type: string
+      - description: last_name
+        in: query
+        name: last_name
+        type: string
+      - description: email_address
+        in: query
+        name: email_address
+        type: string
+      - description: parent_user_id
+        in: query
+        name: parent_user_id
+        type: string
+      - description: page
+        in: query
+        name: page
+        type: string
+      - description: limit
+        in: query
+        name: limit
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            description: holds the recovered users
+            items:
+              $ref: '#/definitions/usersAPI.userResponse'
+            type: array
+        "400":
+          description: when some value of the request is invalid
+          schema:
+            $ref: '#/definitions/common.ApiError'
+        "404":
+          description: when the request was not found
+          schema:
+            $ref: '#/definitions/common.ApiError'
+        "500":
+          description: when something was wrong when processing request
+          schema:
+            $ref: '#/definitions/common.ApiError'
+      tags:
+      - users
+swagger: "2.0"
