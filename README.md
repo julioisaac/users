@@ -73,7 +73,7 @@ make lint
 ## Application Checklist
 
 - [x] [Swagger](https://localhost/)
-- [ ] [APM]()
+- [x] [New Relic](https://one.eu.newrelic.com/)
 - [x] [CI](users/.github/workflows/actions)
 - [ ] [CD]()
 - [ ] [Sonar]()
