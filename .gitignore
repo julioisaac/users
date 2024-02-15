@@ -19,3 +19,13 @@
 
 # Go workspace file
 go.work
+
+vendor/
+.vscode
+__debug_bin
+*.test
+*.out
+tmp/
+.tool-versions
+cover.out
+coverage.html
