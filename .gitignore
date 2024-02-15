@@ -20,6 +20,8 @@
 # Go workspace file
 go.work
 
+.idea/
+
 vendor/
 .vscode
 __debug_bin
